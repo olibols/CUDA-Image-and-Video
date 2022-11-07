@@ -2,20 +2,24 @@
 // Created by olibo on 07/11/2022.
 //
 #include "ImageContainer.cuh"
+#include "DataParser.cuh"
+
+#include <nvjpeg.h>
 
 namespace CIVL{
-    ImageContainer::ImageContainer() {
+    ImageContainer::ImageContainer(const char *pPath) {
         m_pixels = nullptr;
         m_width = 0;
         m_height = 0;
+        //m_parser = new DataParser(pPath);
     }
 
     ImageContainer::~ImageContainer() {
         delete[] m_pixels;
     }
 
-    void ImageContainer::load(const char* pPath) { // Load image from file
-
+    void ImageContainer::load() { // Load image from file
+        //m_pixels = m_parser->latestImage();
     }
 
     void ImageContainer::save(const char* pPath) {

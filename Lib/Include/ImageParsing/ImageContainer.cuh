@@ -5,6 +5,8 @@
 #ifndef CIVL_IMAGECONTAINER_CUH
 #define CIVL_IMAGECONTAINER_CUH
 
+class DataParser;
+
 namespace CIVL{
 
     struct Pixel{
@@ -17,10 +19,10 @@ namespace CIVL{
     class ImageContainer{
     public:
         // Constructor and destructor methods
-        ImageContainer();
+        ImageContainer(const char *pPath);
         ~ImageContainer();
 
-        void load(const char* pPath); // Load image from file
+        void load(); // Load latest image
         void save(const char* pPath); // Save image to file
 
         // Getters and setters
@@ -35,6 +37,8 @@ namespace CIVL{
         Pixel* m_pixels; // Array of pixels
         int m_width; // Width of image
         int m_height; // Height of image
+
+        DataParser* m_parser; // Data parser
     };
 }
 
