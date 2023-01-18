@@ -5,7 +5,7 @@ set(INCLUDE_SOURCE_FILES
         image.h
         image.cu
         image_encoder.h
-        image_encoder.cu Processors/blur.h Processors/blur.cu)
+        image_encoder.cu Processors/blur.h Processors/blur.cu Processors/edge.h Processors/edge.cu)
 
 # add_subdirectory(ImageParsing)
 
