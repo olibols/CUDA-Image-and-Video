@@ -21,3 +21,11 @@ CIVL::Image CIVL::OpenImage(const char *filename) {
 
     return image;
 }
+
+CIVL::Pixel CIVL::Pixel::operator*(float other) {
+    Pixel pixel;
+    pixel.r = this->r * other;
+    pixel.g = this->g * other;
+    pixel.b = this->b * other;
+    return pixel;
+}

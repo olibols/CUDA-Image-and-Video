@@ -10,6 +10,10 @@ namespace CIVL {
         unsigned char g = 0;
         unsigned char b = 0;
         unsigned char a = 0;
+
+        Pixel operator+(int other);
+        Pixel operator+(Pixel other);
+        Pixel operator*(float other);
     };
 
     struct Image {
