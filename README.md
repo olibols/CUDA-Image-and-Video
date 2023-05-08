@@ -18,6 +18,7 @@ Welcome to the CIVL! This library provides a suite of image processing functions
 
 ## Included Third Party Code
 stb_image.h; All permissive header only library for the purpose of reading and saving image formats.
+
 CUDA; For GPU Acceleration, no code included (dependancy)
 
 ## Installation
