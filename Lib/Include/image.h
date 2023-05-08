@@ -15,21 +15,28 @@ namespace CIVL {
             return {static_cast<unsigned char>(r + other),
                     static_cast<unsigned char>(g + other),
                     static_cast<unsigned char>(b + other),
-                    static_cast<unsigned char>(a + other)};
+                    255};
         }
 
         Pixel operator+(Pixel other) {
             return {static_cast<unsigned char>(r + other.r),
                     static_cast<unsigned char>(g + other.g),
                     static_cast<unsigned char>(b + other.b),
-                    static_cast<unsigned char>(a + other.a)};
+                    255};
         }
 
         Pixel operator*(float other) {
             return {static_cast<unsigned char>(r * other),
                     static_cast<unsigned char>(g * other),
                     static_cast<unsigned char>(b * other),
-                    static_cast<unsigned char>(a * other)};
+                    255};
+        }
+
+        Pixel operator-(Pixel other){
+            return {static_cast<unsigned char>(r - other.r),
+                    static_cast<unsigned char>(g - other.g),
+                    static_cast<unsigned char>(b - other.b),
+                    255};
         }
     };
 
@@ -39,8 +46,49 @@ namespace CIVL {
         std::vector<Pixel> pixels;
 
         Image crop(int x, int y, int w, int h);
+
         Image resize(int w, int h);
+
+        Image operator-(Image other) {
+            Image result;
+            result.width = width;
+            result.height = height;
+            result.pixels.resize(width * height);
+
+            for (int i = 0; i < width * height; i++) {
+                result.pixels[i] = pixels[i] - other.pixels[i];
+            }
+
+            return result;
+        };
+
+        Image operator*(float other){
+            Image result;
+            result.width = width;
+            result.height = height;
+            result.pixels.resize(width * height);
+
+            for (int i = 0; i < width * height; i++) {
+                result.pixels[i] = pixels[i] * other;
+            }
+
+            return result;
+        }
+
+        Image operator+(Image other){
+            Image result;
+            result.width = width;
+            result.height = height;
+            result.pixels.resize(width * height);
+
+            for (int i = 0; i < width * height; i++) {
+                result.pixels[i] = pixels[i] + other.pixels[i];
+            }
+
+            return result;
+        }
     };
+
 
     Image OpenImage(const char *filename);
 } // CIVL

@@ -83,6 +83,5 @@ CIVL::Image CIVL::Image::resize(int w, int h) {
             result.pixels[y * w + x] = BilinearInterpolate(srcX, srcY, *this);
         }
     }
-
     return result;
 }
