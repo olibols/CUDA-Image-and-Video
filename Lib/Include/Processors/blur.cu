@@ -10,6 +10,7 @@ __global__ void CudaBoxBlur(const int radius, const int width, const int height,
 namespace CIVL { namespace Blur{
 
     Image BoxBlur(Image image, int radius) {
+        // Get the width, height, and pixel data of the image
         int width = image.width;
         int height = image.height;
         Pixel* image_data = image.pixels.data();
@@ -43,9 +44,11 @@ namespace CIVL { namespace Blur{
 
 // Cuda code for the Gaussian Blur
 __global__ void CudaBoxBlur(const int radius, const int width, const int height, CIVL::Pixel* input, CIVL::Pixel* output) {
+    // Get the x and y coordinates of the current thread
     int x = threadIdx.x + blockIdx.x * blockDim.x;
     int y = threadIdx.y + blockIdx.y * blockDim.y;
 
+    // Check if the current thread is within the bounds of the image
     if (x < width && y < height) {
         int pixelIndex = y * width + x;
 

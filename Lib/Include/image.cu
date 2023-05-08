@@ -6,15 +6,18 @@
 #include "image.h"
 
 CIVL::Image CIVL::OpenImage(const char *filename) {
+    // Load image
     int x, y, n;
     stbi_info(filename, &x, &y, &n);
     unsigned char* data = stbi_load(filename, &x, &y, &n, 4);
 
+    // Construct image
     Image image;
     image.width = x;
     image.height = y;
     image.pixels.resize(x * y);
 
+    // Copy data to image
     for(int i = 0; i < x * y; i++){
         image.pixels[i].r = data[i * 4 + 0];
         image.pixels[i].g = data[i * 4 + 1];
@@ -31,6 +34,7 @@ CIVL::Image CIVL::Image::crop(int x, int y, int w, int h) {
         throw std::runtime_error("Invalid crop dimensions.");
     }
 
+    // Create a new image
     Image cropped;
     cropped.width = w;
     cropped.height = h;
@@ -47,14 +51,17 @@ CIVL::Image CIVL::Image::crop(int x, int y, int w, int h) {
 }
 
 CIVL::Pixel BilinearInterpolate(float x, float y, CIVL::Image image){
+    // https://en.wikipedia.org/wiki/Bilinear_interpolation
     int x1 = (int) x;
     int y1 = (int) y;
     int x2 = std::min(x1 + 1, image.width - 1);
     int y2 = std::min(y1 + 1, image.height - 1);
 
+    // Calculate the weights
     float dx = x - x1;
     float dy = y - y1;
 
+    // Interpolate
     CIVL::Pixel p1 = image.pixels[y1 * image.width + x1];
     CIVL::Pixel p2 = image.pixels[y1 * image.width + x2];
     CIVL::Pixel p3 = image.pixels[y2 * image.width + x1];
@@ -67,14 +74,17 @@ CIVL::Pixel BilinearInterpolate(float x, float y, CIVL::Image image){
 }
 
 CIVL::Image CIVL::Image::resize(int w, int h) {
+    // Create a new image
     Image result;
     result.width = w;
     result.height = h;
     result.pixels.resize(w * h);
 
+    // Calculate the scale factors
     float scaleX = (float) width / w;
     float scaleY = (float) height / h;
 
+    // Iterate over the pixels in the new image
     for(int y = 0; y < h; ++y){
         for(int x = 0; x < w; ++x){
             float srcX = x * scaleX;

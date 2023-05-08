@@ -5,10 +5,16 @@
 
 namespace CIVL {
 
+    /// \brief Pixel struct
+    /// \details Pixel struct with red, green, blue and alpha channels
     struct Pixel {
+        /// \brief Red channel
         unsigned char r = 0;
+        /// \brief Green channel
         unsigned char g = 0;
+        /// \brief Blue channel
         unsigned char b = 0;
+        /// \brief Alpha channel
         unsigned char a = 0;
 
         Pixel operator+(int other) {
@@ -40,13 +46,28 @@ namespace CIVL {
         }
     };
 
+    /// \brief Image struct
+    /// \details Image struct with width, height and pixel data
     struct Image {
+        /// \brief Width of the image
         int width = 0;
+        /// \brief Height of the image
         int height = 0;
+        /// \brief Pixel data
         std::vector<Pixel> pixels;
 
+        /// \brief Crop the image
+        /// \param x X coordinate of the top left corner of the crop region
+        /// \param y Y coordinate of the top left corner of the crop region
+        /// \param w Width of the crop region
+        /// \param h Height of the crop region
+        /// \return Cropped image
         Image crop(int x, int y, int w, int h);
 
+        /// \brief Resize the image
+        /// \param w New width of the image
+        /// \param h New height of the image
+        /// \return Resized image
         Image resize(int w, int h);
 
         Image operator-(Image other) {
@@ -89,7 +110,9 @@ namespace CIVL {
         }
     };
 
-
+    /// \brief Open an image from a file
+    /// \param filename Filename of the image
+    /// \return Image
     Image OpenImage(const char *filename);
 } // CIVL
 

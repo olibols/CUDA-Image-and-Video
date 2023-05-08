@@ -4,7 +4,11 @@
 #include "../image.h"
 
 namespace CIVL { namespace Sharpen{
-        Image UnsharpMask(Image image, float amount);
+    /// \brief Unsharp mask sharpening an image
+    /// \param image Image to sharpen
+    /// \param amount Amount of sharpening
+    /// \return Sharpened image
+    Image UnsharpMask(Image image, float amount);
 } }
 
 #endif //CIVL_SHARPEN_H

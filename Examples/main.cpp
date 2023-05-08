@@ -19,8 +19,8 @@ int main(){
     //CIVL::Image averageImage = CIVL::Average::ScreenBlend(image1, image2);
     //CIVL::Image resized = image1.resize(1000, 1000);
 
-    CIVL::Image testsharpened = CIVL::OpenImage("C:\\Users\\olibo\\Downloads\\testimage.jpg");
-    //CIVL::Image sharpened = CIVL::Sharpen::UnsharpMask(testsharpened, 0.5);
-    CIVL::Image resized = testsharpened.resize(500, 500);
-    CIVL::ImageEncoder::EncodeImage("C:\\Users\\olibo\\Downloads\\testimage.jpg", resized);
+    CIVL::Image testsharpened = CIVL::OpenImage("C:\\Users\\olibo\\Downloads\\test2.png");
+    CIVL::Image sharpened = CIVL::Sharpen::UnsharpMask(testsharpened, 10);
+    //CIVL::Image resized = testsharpened.resize(500, 500);
+    CIVL::ImageEncoder::EncodeImage("C:\\Users\\olibo\\Downloads\\testimage.jpg", sharpened);
 }

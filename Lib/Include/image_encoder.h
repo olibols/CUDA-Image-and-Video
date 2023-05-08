@@ -10,6 +10,9 @@ namespace CIVL {
 
         ~ImageEncoder();
 
+        /// \brief Encode an image to a file
+        /// \param filename Filename to encode to
+        /// \param image Image to encode
         static void EncodeImage(const char *filename, Image image);
     };
 } // CIVL
