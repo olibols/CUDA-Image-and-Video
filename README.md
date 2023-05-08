@@ -1,10 +1,10 @@
+# CIVL - CUDA Image Video Lbrary.
+## Project supervisor, Vasilios Kelefouras
 
-# CUDA Image Library
-
-Welcome to the CUDA Image Library! This library provides a suite of image processing functions optimized for high performance using NVIDIA's CUDA technology. In this README, we'll walk you through how to use this library with some simple examples.
+Welcome to the CIVL! This library provides a suite of image processing functions optimized for high performance using NVIDIA's CUDA technology. In this README, we'll walk you through how to use this library with some simple examples.
 
 ## Table of Contents
-
+-   [Included Third Party Code](#included-third-party-code)
 -   [Installation](#installation)
 -   [Usage](#usage)
     -   [Loading and Saving Images](#loading-and-saving-images)
@@ -16,12 +16,18 @@ Welcome to the CUDA Image Library! This library provides a suite of image proces
     -   [Miscellaneous Image Utilities](#miscellaneous-image-utilities)
 -   [Example Code](#example-code)
 
+## Included Third Party Code
+stb_image.h; All permissive header only library for the purpose of reading and saving image formats.
+CUDA; For GPU Acceleration, no code included (dependancy)
+
 ## Installation
 
 To install the CUDA Image Library, simply clone the repository to your local machine and make sure you have the required dependencies (CUDA, CMake, etc.) installed.
 
-    git clone https://github.com/your_username/cuda-image-library.git
-    cd cuda-image-library
+    git clone https://github.com/olibols/CUDA-Image-and-Video/
+    cd CUDA-Image-and-Video
+
+Create a new project using NVCC and link Lib/Include as an additional include path.
 
 ## Usage
 ### Loading and Saving Images
